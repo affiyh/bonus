@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klaim Bonus Eksklusif - Master John</title>
+    <!-- Tailwind CSS untuk styling modern -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(234, 179, 8, 0.4); }
+            50% { box-shadow: 0 0 35px rgba(234, 179, 8, 0.8); }
+        }
+        .glow-card {
+            animation: pulse-glow 3s infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950">
+
+    <!-- Header / Navbar -->
+    <header class="w-full py-5 px-6 border-b border-slate-800/80 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-yellow-300 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-amber-500/20">
+                    <i class="fa-solid fa-gift"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight tracking-tight text-white">Bonus Eksklusif</h1>
+                    <p class="text-xs text-amber-400 font-medium">Official Master John Program</p>
+                </div>
+            </div>
+            <div class="text-xs bg-slate-800 border border-slate-700/60 px-3 py-1.5 rounded-full text-slate-300 font-medium">
+                <i class="fa-solid fa-shield-halved text-emerald-400 mr-1"></i> Terverifikasi
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="w-full max-w-xl mx-auto p-4 sm:p-6 my-auto flex-grow flex flex-col justify-center">
+
+        <!-- 
+          DATABASE MEMBER APPROVED
+          Pemilik Website: Tambahkan atau ubah akun member di dalam array di bawah ini.
+        -->
+        <script>
+            const APPROVED_MEMBERS = [
+                "cth1",
+                "cth2",
+                "cth3",
+                "cth4",
+                "cth5",
+                "cth6",
+                "DOMPAKTING",
+                "YULISAH",
+                "PENGKI201",
+                "UUSR",
+                "MARTENSHUU",
+            ];
+        </script>
+
+        <!-- Card Utama -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden backdrop-blur-xl">
+            <!-- Background Accent Glow -->
+            <div class="absolute -top-24 -right-24 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <!-- VIEW 1: Form Input Akun -->
+            <div id="view-form" class="space-y-6">
+                <div class="text-center space-y-2">
+                    <span class="inline-block px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-semibold rounded-full uppercase tracking-wider">
+                        Klaim Hadiah Spesial
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Masukkan Akun Member</h2>
+                    <p class="text-sm text-slate-400 max-w-md mx-auto">
+                        Masukkan Akun Member Anda di bawah ini untuk memeriksa dan mengklaim bonus eksklusif sebesar $56.
+                    </p>
+                </div>
+
+                <form id="claim-form" class="space-y-4 pt-2">
+                    <div class="space-y-2">
+                        <label for="member-name" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                            Akun Member
+                        </label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500">
+                                <i class="fa-solid fa-user"></i>
+                            </span>
+                            <input 
+                                type="text" 
+                                id="member-name" 
+                                required 
+                                placeholder="Contoh: ALEX92X"
+                                class="w-full bg-slate-950/80 border border-slate-800 rounded-2xl py-3.5 pl-11 pr-4 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all text-sm sm:text-base font-medium shadow-inner"
+                            >
+                        </div>
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        class="w-full bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-bold py-4 px-6 rounded-2xl shadow-lg shadow-amber-500/20 hover:from-amber-400 hover:to-yellow-300 active:scale-[0.98] transition-all flex items-center justify-center gap-2 text-base cursor-pointer"
+                    >
+                        <span>Claim Hadiah Sekarang</span>
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                    </button>
+                </form>
+
+                <!-- Pesan Error / Notifikasi Non-Member -->
+                <div id="error-alert" class="hidden p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-sm flex items-start gap-3">
+                    <i class="fa-solid fa-triangle-exclamation text-lg mt-0.5"></i>
+                    <div>
+                        <span class="font-bold block text-rose-300">Akun Tidak Ditemukan</span>
+                        <span id="error-message">Akun yang Anda masukkan salah sihlkana coba kembali</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW LOADING: Progress Bar 0% - 100% -->
+            <div id="view-loading" class="hidden space-y-6 py-6 text-center">
+                <div class="w-16 h-16 bg-amber-500/10 border border-amber-500/30 rounded-full flex items-center justify-center mx-auto text-amber-400 text-2xl shadow-lg shadow-amber-500/10">
+                    <i class="fa-solid fa-spinner animate-spin"></i>
+                </div>
+                
+                <div class="space-y-2">
+                    <h3 class="text-xl font-bold text-white">Memproses Klaim Bonus...</h3>
+                    <p class="text-xs text-slate-400">Harap tunggu sebentar, sistem sedang memverifikasi akun Anda.</p>
+                </div>
+
+                <div class="space-y-2 max-w-sm mx-auto">
+                    <div class="flex justify-between text-xs font-bold text-amber-400">
+                        <span>Verifikasi Member</span>
+                        <span id="loading-percentage">0%</span>
+                    </div>
+                    <!-- Outer Bar -->
+                    <div class="w-full h-3 bg-slate-950 rounded-full overflow-hidden border border-slate-800 p-0.5">
+                        <!-- Inner Bar -->
+                        <div id="loading-bar" class="h-full bg-gradient-to-r from-amber-500 to-yellow-300 rounded-full w-0 transition-all duration-75"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 2: Tampilan Berhasil / Klaim Aktif -->
+            <div id="view-success" class="hidden space-y-6">
+                <div class="text-center space-y-2">
+                    <div class="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto text-emerald-400 text-2xl shadow-lg shadow-emerald-500/10">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Selamat <span id="display-name" class="text-amber-400"></span>!</h2>
+                    <p class="text-lg font-bold text-emerald-400">
+                        Kamu mendapatkan bonus sebesar $56.
+                    </p>
+                </div>
+
+                <!-- Informasi Bonus & Instruksi Deposit Olivia -->
+                <div class="bg-slate-950/60 border border-slate-800 rounded-2xl p-5 space-y-4">
+                    <div class="space-y-2">
+                        <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold block">Persyaratan Klaim</span>
+                        <div class="p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-200 text-sm leading-relaxed space-y-2">
+                            <p>
+                                Untuk bisa mengklaim bonus kamu harus melakukan deposit terlebih dahulu sebesar <strong>Rp.50,000</strong> saja. Untuk cara deposit silahkan hubungi <strong>Olivia</strong> via WhatsApp / Telegram.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tombol Kontak Olivia -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                        <a 
+                            href="https://wa.me/6282357096129" 
+                            target="_blank" 
+                            class="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl shadow-lg shadow-emerald-600/20 transition-all text-sm"
+                        >
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Olivia WhatsApp</span>
+                        </a>
+                        <a 
+                            href="https://t.me/oliviazahira" 
+                            target="_blank" 
+                            class="flex items-center justify-center gap-2 bg-sky-600 hover:bg-sky-500 text-white font-bold py-3 px-4 rounded-xl shadow-lg shadow-sky-600/20 transition-all text-sm"
+                        >
+                            <i class="fa-brands fa-telegram text-lg"></i>
+                            <span>Olivia Telegram</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Countdown Timer Section -->
+                <div class="bg-gradient-to-b from-slate-950 to-slate-900 border border-slate-800 rounded-2xl p-5 text-center space-y-3">
+                    <span class="text-xs uppercase tracking-widest text-slate-400 font-bold flex items-center justify-center gap-1.5">
+                        <i class="fa-regular fa-clock text-amber-400"></i> Bonus Akan Berakhir Dalam:
+                    </span>
+                    <div id="countdown-timer" class="text-3xl sm:text-4xl font-black text-white tracking-widest font-mono drop-shadow">
+                        24:00:00
+                    </div>
+                    <p class="text-xs text-slate-500">Selesaikan deposit sebelum batas waktu untuk mencairkan bonus.</p>
+                </div>
+
+                <button 
+                    onclick="resetView()" 
+                    class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-3 px-6 rounded-2xl border border-slate-700 transition-all text-sm flex items-center justify-center gap-2 cursor-pointer"
+                >
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Kembali</span>
+                </button>
+            </div>
+
+            <!-- VIEW 3: Tampilan Waktu Habis (Expired > 24 Jam) -->
+            <div id="view-expired" class="hidden space-y-6 text-center">
+                <div class="w-16 h-16 bg-rose-500/10 border border-rose-500/30 rounded-full flex items-center justify-center mx-auto text-rose-500 text-2xl shadow-lg shadow-rose-500/10">
+                    <i class="fa-solid fa-hourglass-end"></i>
+                </div>
+                
+                <div class="space-y-2">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Bonus Berakhir</h2>
+                    <p class="text-sm text-slate-300 leading-relaxed max-w-md mx-auto">
+                        Maaf bonus kamu sudah berakhir, silahkan hubungi <strong class="text-amber-400">Master John</strong>. Untuk menanyakan alasan penghentian bonus.
+                    </p>
+                </div>
+
+                <div class="p-5 bg-slate-950/60 border border-slate-800 rounded-2xl space-y-3">
+                    <p class="text-xs text-slate-400">Hubungi Master John langsung melalui layanan berikut:</p>
+                    <a 
+                        href="https://wa.me/?text=Halo%20Master%20John,%20saya%20ingin%20menanyakan%20alasan%20penghentian%20bonus%20saya." 
+                        target="_blank" 
+                        class="inline-flex items-center justify-center gap-2 w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-amber-500/20 transition-all text-sm"
+                    >
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Hubungi Master John</span>
+                    </a>
+                </div>
+
+                <button 
+                    onclick="resetView()" 
+                    class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-3 px-6 rounded-2xl border border-slate-700 transition-all text-sm flex items-center justify-center gap-2 cursor-pointer"
+                >
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Cek Akun Lain</span>
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-4 text-center text-xs text-slate-600 border-t border-slate-900">
+        &copy; 2026 Master John Reward System. All rights reserved.
+    </footer>
+
+    <!-- JavaScript Logika Aplikasi, Loading & Timer -->
+    <script>
+        const DURATION_MS = 24 * 60 * 60 * 1000; // 24 jam
+        let countdownInterval = null;
+
+        const form = document.getElementById('claim-form');
+        const nameInput = document.getElementById('member-name');
+        const errorAlert = document.getElementById('error-alert');
+        const errorMessage = document.getElementById('error-message');
+        
+        const viewForm = document.getElementById('view-form');
+        const viewLoading = document.getElementById('view-loading');
+        const viewSuccess = document.getElementById('view-success');
+        const viewExpired = document.getElementById('view-expired');
+        const displayName = document.getElementById('display-name');
+        const timerDisplay = document.getElementById('countdown-timer');
+
+        const loadingBar = document.getElementById('loading-bar');
+        const loadingPercentage = document.getElementById('loading-percentage');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const inputVal = nameInput.value.trim();
+
+            if (!inputVal) return;
+
+            // Cek keanggotaan member (case-insensitive)
+            const isMemberValid = APPROVED_MEMBERS.some(m => m.toLowerCase() === inputVal.toLowerCase());
+
+            if (!isMemberValid) {
+                errorAlert.classList.remove('hidden');
+                errorMessage.textContent = `Akun "${inputVal}" tidak terdaftar sihlakan coba lagi atau ingat-ingat kembali akun anda.`;
+                return;
+            }
+
+            errorAlert.classList.add('hidden');
+            
+            // Jalankan Loading Animation dulu selama 3.5 detik
+            runLoadingAnimation(inputVal);
+        });
+
+        function runLoadingAnimation(rawName) {
+            showView('loading');
+            let progress = 0;
+            loadingBar.style.width = '0%';
+            loadingPercentage.textContent = '0%';
+
+            const totalDuration = 3500; // 3.5 detik
+            const intervalTime = 35; // Update setiap 35ms
+            const increment = 100 / (totalDuration / intervalTime);
+
+            const interval = setInterval(() => {
+                progress += increment;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    
+                    // Setelah loading selesai 100%, proses logika klaim
+                    setTimeout(() => {
+                        processClaim(rawName);
+                    }, 300);
+                }
+                loadingBar.style.width = `${progress}%`;
+                loadingPercentage.textContent = `${Math.floor(progress)}%`;
+            }, intervalTime);
+        }
+
+        function processClaim(rawName) {
+            const storageKey = `claim_timer_${rawName.toLowerCase()}`;
+            const now = new Date().getTime();
+            let startTime = localStorage.getItem(storageKey);
+
+            if (!startTime) {
+                // Klaim pertama kali
+                startTime = now;
+                localStorage.setItem(storageKey, startTime);
+            } else {
+                startTime = parseInt(startTime, 10);
+            }
+
+            const elapsed = now - startTime;
+
+            if (elapsed >= DURATION_MS) {
+                // Waktu sudah lebih dari 24 jam
+                showView('expired');
+            } else {
+                // Masih dalam rentang 24 jam
+                displayName.textContent = rawName;
+                showView('success');
+                startCountdown(startTime + DURATION_MS);
+            }
+        }
+
+        function startCountdown(targetTime) {
+            if (countdownInterval) clearInterval(countdownInterval);
+
+            function updateTimer() {
+                const now = new Date().getTime();
+                const distance = targetTime - now;
+
+                if (distance <= 0) {
+                    clearInterval(countdownInterval);
+                    timerDisplay.textContent = "00:00:00";
+                    showView('expired');
+                    return;
+                }
+
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                timerDisplay.textContent = 
+                    String(hours).padStart(2, '0') + ":" + 
+                    String(minutes).padStart(2, '0') + ":" + 
+                    String(seconds).padStart(2, '0');
+            }
+
+            updateTimer();
+            countdownInterval = setInterval(updateTimer, 1000);
+        }
+
+        function showView(viewName) {
+            viewForm.classList.add('hidden');
+            viewLoading.classList.add('hidden');
+            viewSuccess.classList.add('hidden');
+            viewExpired.classList.add('hidden');
+
+            if (viewName === 'form') {
+                viewForm.classList.remove('hidden');
+                if (countdownInterval) clearInterval(countdownInterval);
+            } else if (viewName === 'loading') {
+                viewLoading.classList.remove('hidden');
+            } else if (viewName === 'success') {
+                viewSuccess.classList.remove('hidden');
+            } else if (viewName === 'expired') {
+                viewExpired.classList.remove('hidden');
+            }
+        }
+
+        function resetView() {
+            nameInput.value = '';
+            errorAlert.classList.add('hidden');
+            showView('form');
+        }
+    </script>
+</body>
+</html>
